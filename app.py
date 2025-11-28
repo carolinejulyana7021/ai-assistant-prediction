@@ -1,10 +1,30 @@
+import sys
 import streamlit as st
+
+# Set page config DULUAN sebelum import lain
+st.set_page_config(
+    page_title="Prediksi Satisfaction AI Assistant",
+    page_icon="🤖",
+    layout="wide",
+    initial_sidebar_state="expanded"
+)
+
 import pandas as pd
 import numpy as np
-import plotly.express as px
-import plotly.graph_objects as go
-from plotly.subplots import make_subplots
-from sklearn.metrics import confusion_matrix, classification_report, precision_score, recall_score, f1_score, accuracy_score
+
+try:
+    import plotly.express as px
+    import plotly.graph_objects as go
+    from plotly.subplots import make_subplots
+except Exception as e:
+    st.error(f"Error loading Plotly: {str(e)}")
+    st.stop()
+
+try:
+    from sklearn.metrics import confusion_matrix, classification_report, precision_score, recall_score, f1_score, accuracy_score
+except Exception as e:
+    st.error(f"Error loading scikit-learn: {str(e)}")
+    st.stop()
 
 # Set page config
 st.set_page_config(
@@ -345,3 +365,4 @@ elif page == "📋 Project Info":
 # Footer
 st.markdown("---")
 st.markdown("<div style='text-align: center; color: #999;'>© 2025 - Deep Learning Project | 🏆 Best Model: Gradient Boosting Regression</div>", unsafe_allow_html=True)
+
