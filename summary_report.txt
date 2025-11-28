@@ -1,0 +1,35 @@
+
+JUDUL PROJECT:
+Perbandingan Random Forest Regression dan Gradient Boosting Regression 
+Pada Prediksi Tingkat Kepuasan Pengguna AI Assistant
+
+DATASET:
+- Total samples: 10000
+- Training samples: 8000 (80%)
+- Test samples: 2000 (20%)
+- Features: 5
+- Feature names: SessionLengthMin, TotalPrompts, AI_AssistanceLevel, StudentLevel_Encoded, TaskType_Encoded
+
+MODEL COMPARISON:
+Random Forest (Tuned):
+  - R² Score: 0.6019
+  - RMSE: 0.7207
+  - MAE: 0.5773
+  
+Gradient Boosting (Tuned):
+  - R² Score: 0.6105
+  - RMSE: 0.7129
+  - MAE: 0.5720
+
+BEST MODEL: Gradient Boosting
+  - R² Score: 0.6105
+  - Explanation: 61.0% variance explained
+
+TOP 3 IMPORTANT FEATURES:
+1. AI_AssistanceLevel - 0.923
+2. SessionLengthMin - 0.056
+3. TotalPrompts - 0.009
+
+CONCLUSION:
+Model Gradient Boosting memberikan hasil terbaik dengan mampu memprediksi 
+tingkat kepuasan pengguna dengan akurasi 61.0%.
