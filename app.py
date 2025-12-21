@@ -13,16 +13,268 @@ st.set_page_config(
     initial_sidebar_state="expanded"
 )
 
-# Custom CSS
+# ============================================================================
+# CUSTOM CSS - BACKGROUND PUTIH 100%, TEKS GELAP, GRAFIK TULISAN CERAH & BESAR
+# ============================================================================
 st.markdown("""
 <style>
-    .main { background: linear-gradient(135deg, #0f0f1e 0%, #1a1a2e 100%); color: #ffffff; }
-    h1 { color: #667eea; text-shadow: 0 2px 10px rgba(102, 126, 234, 0.3); margin-bottom: 10px; }
-    h2, h3 { color: #f59e0b; }
-    .stButton>button { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; border: none; border-radius: 10px; padding: 12px 24px; font-weight: bold; }
-    .stButton>button:hover { transform: scale(1.05); }
-    [data-testid="stSidebar"] { background: linear-gradient(180deg, #1a1a2e 0%, #16213e 100%); }
-    .winner-badge { background: linear-gradient(135deg, #f59e0b 0%, #f97316 100%); color: white; padding: 15px 25px; border-radius: 15px; font-weight: bold; text-align: center; margin: 15px 0; }
+    /* ===== ROOT & GLOBAL STYLES ===== */
+    * {
+        background-color: transparent !important;
+    }
+    
+    html, body {
+        background: #ffffff !important;
+    }
+    
+    /* ===== MAIN CONTAINER - PUTIH TOTAL ===== */
+    .main {
+        background: #ffffff !important;
+        color: #1a1a1a;
+    }
+    
+    [data-testid="stAppViewContainer"] {
+        background: #ffffff !important;
+    }
+    
+    [data-testid="stHeader"] {
+        background: #ffffff !important;
+    }
+    
+    [data-testid="stMainBlockContainer"] {
+        background: #ffffff !important;
+    }
+    
+    .stApp {
+        background: #ffffff !important;
+    }
+    
+    /* ===== SIDEBAR - PUTIH CERAH ===== */
+    [data-testid="stSidebar"] {
+        background: #f0f2f6 !important;
+    }
+    
+    [data-testid="stSidebar"] > div:first-child {
+        background: #f0f2f6 !important;
+    }
+    
+    /* Sidebar text - gelap agar terlihat */
+    [data-testid="stSidebar"] h1,
+    [data-testid="stSidebar"] h2,
+    [data-testid="stSidebar"] h3,
+    [data-testid="stSidebar"] p,
+    [data-testid="stSidebar"] span,
+    [data-testid="stSidebar"] label,
+    [data-testid="stSidebar"] li {
+        color: #1a1a1a !important;
+    }
+    
+    /* ===== HEADING STYLES ===== */
+    h1 { 
+        color: #1a1a2e !important; 
+        text-shadow: 0 2px 10px rgba(0, 0, 0, 0.08); 
+        margin-bottom: 10px; 
+    }
+    
+    h2 { 
+        color: #2c3e50 !important; 
+    }
+    
+    h3 { 
+        color: #34495e !important; 
+    }
+    
+    h4, h5, h6 {
+        color: #34495e !important;
+    }
+    
+    /* ===== PARAGRAPH & TEXT ===== */
+    p, li, span, label, div {
+        color: #2c3e50 !important;
+    }
+    
+    /* ===== BUTTONS ===== */
+    .stButton > button {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+        color: white !important;
+        border: none !important;
+        border-radius: 10px !important;
+        padding: 12px 24px !important;
+        font-weight: bold !important;
+    }
+    
+    .stButton > button:hover {
+        transform: scale(1.05) !important;
+    }
+    
+    /* ===== METRIC CARDS ===== */
+    [data-testid="stMetricContainer"] {
+        background: #f8f9fa !important;
+        border-radius: 10px !important;
+        padding: 15px !important;
+        border: 1px solid #e0e0e0 !important;
+    }
+    
+    [data-testid="stMetricLabel"],
+    [data-testid="stMetricValue"],
+    [data-testid="stMetricDelta"] {
+        color: #2c3e50 !important;
+    }
+    
+    /* ===== BADGE/DIVIDER ===== */
+    .winner-badge { 
+        background: linear-gradient(135deg, #f59e0b 0%, #f97316 100%) !important;
+        color: white !important;
+        padding: 15px 25px !important;
+        border-radius: 15px !important;
+        font-weight: bold !important;
+        text-align: center !important;
+        margin: 15px 0 !important;
+    }
+    
+    /* ===== INFO BOXES ===== */
+    .stInfo, .stSuccess, .stWarning, .stError {
+        color: #2c3e50 !important;
+    }
+    
+    .stInfo {
+        background-color: #e3f2fd !important;
+        border-left: 4px solid #1976d2 !important;
+    }
+    
+    .stSuccess {
+        background-color: #e8f5e9 !important;
+        border-left: 4px solid #388e3c !important;
+    }
+    
+    .stWarning {
+        background-color: #fff3e0 !important;
+        border-left: 4px solid #f57c00 !important;
+    }
+    
+    .stError {
+        background-color: #ffebee !important;
+        border-left: 4px solid #d32f2f !important;
+    }
+    
+    /* ===== DATAFRAME ===== */
+    [data-testid="stDataFrame"] {
+        background: #ffffff !important;
+    }
+    
+    [data-testid="stDataFrame"] th {
+        background-color: #f0f2f6 !important;
+        color: #1a1a1a !important;
+    }
+    
+    [data-testid="stDataFrame"] td {
+        background-color: #ffffff !important;
+        color: #2c3e50 !important;
+    }
+    
+    /* ===== EXPANDABLE SECTIONS ===== */
+    .streamlit-expanderHeader {
+        background-color: #f5f5f5 !important;
+        color: #1a1a1a !important;
+    }
+    
+    .streamlit-expanderContent {
+        background-color: #fafafa !important;
+        color: #2c3e50 !important;
+    }
+    
+    /* ===== SLIDERS ===== */
+    .stSlider {
+        background: transparent !important;
+    }
+    
+    .stSlider > div > div > div > div {
+        color: #2c3e50 !important;
+    }
+    
+    /* ===== RADIO BUTTONS ===== */
+    .stRadio {
+        background: transparent !important;
+    }
+    
+    .stRadio > label {
+        color: #2c3e50 !important;
+    }
+    
+    .stRadio > label > div {
+        color: #2c3e50 !important;
+    }
+    
+    /* ===== CHECKBOX ===== */
+    .stCheckbox {
+        background: transparent !important;
+    }
+    
+    .stCheckbox > label {
+        color: #2c3e50 !important;
+    }
+    
+    /* ===== INPUT FIELDS ===== */
+    .stTextInput > div > div > input,
+    .stNumberInput > div > div > input,
+    .stSelectbox > div > div > select,
+    .stMultiSelect > div > div > div {
+        background: #ffffff !important;
+        color: #2c3e50 !important;
+        border: 1px solid #e0e0e0 !important;
+    }
+    
+    /* ===== TABS ===== */
+    .stTabs [data-baseweb="tab-list"] {
+        background: transparent !important;
+    }
+    
+    .stTabs [data-baseweb="tab-list"] button {
+        color: #2c3e50 !important;
+        background-color: #f0f2f6 !important;
+    }
+    
+    .stTabs [data-baseweb="tab-list"] button[aria-selected="true"] {
+        color: #667eea !important;
+        background-color: #ffffff !important;
+        border-bottom: 2px solid #667eea !important;
+    }
+    
+    /* ===== DIVIDER ===== */
+    .streamlit-code-block {
+        background: #f5f5f5 !important;
+        color: #2c3e50 !important;
+    }
+    
+    /* ===== MARKDOWN CONTENT ===== */
+    [data-testid="stMarkdownContainer"] {
+        color: #2c3e50 !important;
+    }
+    
+    /* ===== SCROLLBAR ===== */
+    ::-webkit-scrollbar {
+        width: 8px;
+        height: 8px;
+    }
+    
+    ::-webkit-scrollbar-track {
+        background: #f1f1f1;
+    }
+    
+    ::-webkit-scrollbar-thumb {
+        background: #c1c1c1;
+        border-radius: 4px;
+    }
+    
+    ::-webkit-scrollbar-thumb:hover {
+        background: #888;
+    }
+    
+    /* ===== PLOTLY BACKGROUND ===== */
+    .plotly {
+        background: #ffffff !important;
+    }
+    
 </style>
 """, unsafe_allow_html=True)
 
@@ -71,7 +323,7 @@ results_df, metrics_df, importance_df = load_data()
 
 # Title
 st.title("🤖 Prediksi Tingkat Kepuasan Pengguna AI Assistant")
-st.markdown("<div style='text-align: center; margin-bottom: 30px;'><h3 style='color: #f59e0b;'>Perbandingan Random Forest Regression & Gradient Boosting Regression</h3><p style='color: #999; font-size: 14px;'>Deep Learning Project</p></div>", unsafe_allow_html=True)
+st.markdown("<div style='text-align: center; margin-bottom: 30px;'><h3 style='color: #2c3e50;'>Perbandingan Random Forest Regression & Gradient Boosting Regression</h3><p style='color: #666; font-size: 14px;'>Deep Learning Project</p></div>", unsafe_allow_html=True)
 st.markdown("---")
 
 # Sidebar
@@ -114,14 +366,31 @@ if page == "🏠 Dashboard":
     with col1:
         st.subheader("🎯 Satisfaction Distribution")
         fig1 = px.histogram(x=results_df['Actual_Satisfaction'], nbins=25, title="Satisfaction Rating Distribution")
-        fig1.update_layout(height=400, plot_bgcolor='rgba(0,0,0,0)', font=dict(color='#ffffff'))
+        fig1.update_layout(
+            height=400, 
+            plot_bgcolor='#ffffff', 
+            paper_bgcolor='#ffffff', 
+            font=dict(color='#00AA00', size=14),
+            title_font=dict(color='#FF0000', size=18),
+            xaxis=dict(gridcolor='#e0e0e0', title_font=dict(color='#FF0000', size=14), tickfont=dict(color='#00AA00', size=12)),
+            yaxis=dict(gridcolor='#e0e0e0', title_font=dict(color='#FF0000', size=14), tickfont=dict(color='#00AA00', size=12))
+        )
         st.plotly_chart(fig1, use_container_width=True)
     
     with col2:
         st.subheader("📊 Model Performance")
         fig2 = go.Figure()
-        fig2.add_trace(go.Bar(x=['Random Forest', 'Gradient Boosting'], y=[0.5420, 0.5520], name='R² Score', marker=dict(color='#667eea')))
-        fig2.update_layout(title="Model Performance", height=400, plot_bgcolor='rgba(0,0,0,0)', font=dict(color='#ffffff'))
+        fig2.add_trace(go.Bar(x=['Random Forest', 'Gradient Boosting'], y=[0.5420, 0.5520], name='R² Score', marker=dict(color=['#667eea', '#f59e0b'])))
+        fig2.update_layout(
+            title="Model Performance", 
+            height=400, 
+            plot_bgcolor='#ffffff', 
+            paper_bgcolor='#ffffff', 
+            font=dict(color='#00AA00', size=14),
+            title_font=dict(color='#FF0000', size=18),
+            xaxis=dict(gridcolor='#e0e0e0', title_font=dict(color='#FF0000', size=14), tickfont=dict(color='#00AA00', size=12)),
+            yaxis=dict(gridcolor='#e0e0e0', title_font=dict(color='#FF0000', size=14), tickfont=dict(color='#00AA00', size=12))
+        )
         st.plotly_chart(fig2, use_container_width=True)
     
     st.info("💡 Gradient Boosting memiliki performa sedikit lebih baik dengan error (RMSE) yang lebih rendah.")
@@ -152,7 +421,15 @@ elif page == "📊 Model Comparison":
         st.markdown("#### 🌲 Random Forest Confusion Matrix")
         cm_rf = confusion_matrix(y_true_class, y_pred_class_rf)
         fig_cm_rf = px.imshow(cm_rf, text_auto=True, color_continuous_scale='Blues', labels=dict(x="Predicted", y="Actual"), x=['Not Satisfied', 'Satisfied'], y=['Not Satisfied', 'Satisfied'])
-        fig_cm_rf.update_layout(height=350, font=dict(color='#ffffff'))
+        fig_cm_rf.update_layout(
+            height=350, 
+            plot_bgcolor='#ffffff', 
+            paper_bgcolor='#ffffff', 
+            font=dict(color='#FF0000', size=14),
+            title_font=dict(color='#FF0000', size=16),
+            xaxis=dict(title_font=dict(color='#FF0000', size=12), tickfont=dict(color='#00AA00', size=12)),
+            yaxis=dict(title_font=dict(color='#FF0000', size=12), tickfont=dict(color='#00AA00', size=12))
+        )
         st.plotly_chart(fig_cm_rf, use_container_width=True)
         tn_rf, fp_rf, fn_rf, tp_rf = cm_rf.ravel()
         acc_rf = (tp_rf + tn_rf) / (tp_rf + tn_rf + fp_rf + fn_rf)
@@ -162,7 +439,15 @@ elif page == "📊 Model Comparison":
         st.markdown("#### 🚀 Gradient Boosting Confusion Matrix")
         cm_gbr = confusion_matrix(y_true_class, y_pred_class_gbr)
         fig_cm_gbr = px.imshow(cm_gbr, text_auto=True, color_continuous_scale='Greens', labels=dict(x="Predicted", y="Actual"), x=['Not Satisfied', 'Satisfied'], y=['Not Satisfied', 'Satisfied'])
-        fig_cm_gbr.update_layout(height=350, font=dict(color='#ffffff'))
+        fig_cm_gbr.update_layout(
+            height=350, 
+            plot_bgcolor='#ffffff', 
+            paper_bgcolor='#ffffff', 
+            font=dict(color='#FF0000', size=14),
+            title_font=dict(color='#FF0000', size=16),
+            xaxis=dict(title_font=dict(color='#FF0000', size=12), tickfont=dict(color='#00AA00', size=12)),
+            yaxis=dict(title_font=dict(color='#FF0000', size=12), tickfont=dict(color='#00AA00', size=12))
+        )
         st.plotly_chart(fig_cm_gbr, use_container_width=True)
         tn_gbr, fp_gbr, fn_gbr, tp_gbr = cm_gbr.ravel()
         acc_gbr = (tp_gbr + tn_gbr) / (tp_gbr + tn_gbr + fp_gbr + fn_gbr)
@@ -211,8 +496,8 @@ elif page == "🎯 Make Prediction":
         st.subheader("🎯 Prediction Result")
         col1, col2, col3 = st.columns([1, 2, 1])
         with col2:
-            st.markdown(f"<div style='background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 20px; padding: 30px; text-align: center;'><p style='color: #ffffff;'>Predicted Rating</p><h1 style='color: #ffffff; font-size: 60px;'>{prediction:.2f}</h1></div>", unsafe_allow_html=True)
-        st.markdown(f"**Status:** {'✅ Satisfied' if prediction >= 3.5 else '❌ Not Satisfied'}")
+            st.markdown(f"<div style='background: linear-gradient(135deg, #00AA00 0%, #33FF33 100%); border-radius: 20px; padding: 30px; text-align: center; box-shadow: 0 4px 15px rgba(0, 170, 0, 0.3);'><p style='color: #ffffff; font-size: 16px; font-weight: bold;'>Predicted Rating</p><h1 style='color: #ffffff; font-size: 80px; font-weight: bold; margin: 0;'>{prediction:.2f}</h1></div>", unsafe_allow_html=True)
+        st.markdown(f"<h3 style='text-align: center; color: #2c3e50;'>**Status:** {'✅ Satisfied' if prediction >= 3.5 else '❌ Not Satisfied'}</h3>", unsafe_allow_html=True)
 
 # PAGE 4: FEATURE IMPORTANCE
 elif page == "📈 Feature Importance":
@@ -228,11 +513,27 @@ elif page == "📈 Feature Importance":
     col1, col2 = st.columns(2)
     with col1:
         fig_rf = px.bar(importance_df.sort_values('RF_Importance'), x='RF_Importance', y='Feature', orientation='h', title='Random Forest')
-        fig_rf.update_layout(height=350, plot_bgcolor='rgba(0,0,0,0)', font=dict(color='#ffffff'))
+        fig_rf.update_layout(
+            height=350, 
+            plot_bgcolor='#ffffff', 
+            paper_bgcolor='#ffffff', 
+            font=dict(color='#00AA00', size=14),
+            title_font=dict(color='#FF0000', size=16),
+            xaxis=dict(gridcolor='#e0e0e0', title_font=dict(color='#FF0000', size=12), tickfont=dict(color='#00AA00', size=12)),
+            yaxis=dict(title_font=dict(color='#FF0000', size=12), tickfont=dict(color='#00AA00', size=12))
+        )
         st.plotly_chart(fig_rf, use_container_width=True)
     with col2:
         fig_gbr = px.bar(importance_df.sort_values('GBR_Importance'), x='GBR_Importance', y='Feature', orientation='h', title='Gradient Boosting')
-        fig_gbr.update_layout(height=350, plot_bgcolor='rgba(0,0,0,0)', font=dict(color='#ffffff'))
+        fig_gbr.update_layout(
+            height=350, 
+            plot_bgcolor='#ffffff', 
+            paper_bgcolor='#ffffff', 
+            font=dict(color='#00AA00', size=14),
+            title_font=dict(color='#FF0000', size=16),
+            xaxis=dict(gridcolor='#e0e0e0', title_font=dict(color='#FF0000', size=12), tickfont=dict(color='#00AA00', size=12)),
+            yaxis=dict(title_font=dict(color='#FF0000', size=12), tickfont=dict(color='#00AA00', size=12))
+        )
         st.plotly_chart(fig_gbr, use_container_width=True)
     
     st.info("💡 **SessionLengthMin** adalah fitur paling dominan (45-48%)")
@@ -263,7 +564,15 @@ elif page == "📉 Results Analysis":
     with col1:
         st.markdown("#### 📊 Residuals Histogram")
         fig_res = px.histogram(x=results_df['GBR_Error'], nbins=30, title="Distribusi Error")
-        fig_res.update_layout(height=400, plot_bgcolor='rgba(0,0,0,0)', font=dict(color='#ffffff'))
+        fig_res.update_layout(
+            height=400, 
+            plot_bgcolor='#ffffff', 
+            paper_bgcolor='#ffffff', 
+            font=dict(color='#00AA00', size=14),
+            title_font=dict(color='#FF0000', size=16),
+            xaxis=dict(gridcolor='#e0e0e0', title_font=dict(color='#FF0000', size=12), tickfont=dict(color='#00AA00', size=12)),
+            yaxis=dict(gridcolor='#e0e0e0', title_font=dict(color='#FF0000', size=12), tickfont=dict(color='#00AA00', size=12))
+        )
         st.plotly_chart(fig_res, use_container_width=True)
         
     with col2:
@@ -273,10 +582,19 @@ elif page == "📉 Results Analysis":
             x=results_df['GBR_Tuned_Prediction'],
             y=results_df['GBR_Error'],
             mode='markers',
-            marker=dict(size=5, color=results_df['GBR_Error'], colorscale='RdBu_r', showscale=True)
+            marker=dict(size=6, color=results_df['GBR_Error'], colorscale='RdBu_r', showscale=True)
         ))
-        fig_scatter.add_hline(y=0, line_dash="dash", line_color="yellow")
-        fig_scatter.update_layout(title="Error vs Predicted Value", height=400, plot_bgcolor='rgba(0,0,0,0.1)', font=dict(color='#ffffff'))
+        fig_scatter.add_hline(y=0, line_dash="dash", line_color="red")
+        fig_scatter.update_layout(
+            title="Error vs Predicted Value", 
+            height=400, 
+            plot_bgcolor='#ffffff', 
+            paper_bgcolor='#ffffff', 
+            font=dict(color='#00AA00', size=14),
+            title_font=dict(color='#FF0000', size=16),
+            xaxis=dict(gridcolor='#e0e0e0', title_font=dict(color='#FF0000', size=12), tickfont=dict(color='#00AA00', size=12)),
+            yaxis=dict(gridcolor='#e0e0e0', title_font=dict(color='#FF0000', size=12), tickfont=dict(color='#00AA00', size=12))
+        )
         st.plotly_chart(fig_scatter, use_container_width=True)
     
     st.markdown("---")
